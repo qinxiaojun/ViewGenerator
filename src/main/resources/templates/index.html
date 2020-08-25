@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="/common/common :: head('首页')"></head>
+
+<body>
+
+<header th:include="/common/common :: header('首页')"></header>
+
+<div class="admin">
+
+    <div th:include="/common/common :: sidebar"></div>
+
+    <div class="content-page">
+        <div class="content">
+
+            <div class="am-g">
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:include="/common/common :: commonJS" th:remove="tag"></div>
+
+</body>
+
+</html>
