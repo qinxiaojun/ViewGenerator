@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 通用访问匹配页面跳转
- *
- * @author dolyw.com
- * @date 2019/1/24 19:27
  */
 @Controller
 public class IndexController {
@@ -17,8 +14,6 @@ public class IndexController {
      * 主页
      *
      * @return java.lang.String
-     * @author dolyw.com
-     * @date 2019/4/6 13:17
      */
     @RequestMapping("/")
     public String index() {
@@ -30,8 +25,6 @@ public class IndexController {
      *
      * @param url
      * @return java.lang.String
-     * @author dolyw.com
-     * @date 2019/1/24 19:27
      */
     @RequestMapping("{url}.shtml")
     public String page(@PathVariable("url") String url) {
@@ -44,8 +37,6 @@ public class IndexController {
      * @param module
      * @param url
      * @return java.lang.String
-     * @author dolyw.com
-     * @date 2019/1/24 19:27
      */
     @RequestMapping("{module}/{url}.shtml")
     public String page(@PathVariable("module") String module, @PathVariable("url") String url) {
@@ -58,8 +49,6 @@ public class IndexController {
      * @param module
      * @param url
      * @return java.lang.String
-     * @author dolyw.com
-     * @date 2019/1/25 19:35
      */
     @RequestMapping("{module}/{module2}/{url}.shtml")
     public String page(@PathVariable("module") String module, @PathVariable("module2") String module2,
