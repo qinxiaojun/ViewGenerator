@@ -4,8 +4,8 @@
 package ${basepackage}.${modulepackage}.dao;
 
 import ${basepackage}.${modulepackage}.model.${className};
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * @author ${author}
  * @date ${now?string('yyyy-MM-dd HH:mm:ss')}
  */
-@Repository
+@Mapper
 public interface ${className}Dao{
 
     /**
