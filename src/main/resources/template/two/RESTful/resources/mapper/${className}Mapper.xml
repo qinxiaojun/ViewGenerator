@@ -28,7 +28,7 @@
         (<#list table.columns as column>#${r'{'}${column.columnNameLower}${r'}'}<#if column_has_next>,</#if></#list>)
     </insert>
 
-    <insert id="insertIgnoreNull">
+    <insert id="insertIgnoreNull" <#if table.pkColumn.javaType == 'Integer'>useGeneratedKeys="true" keyProperty="id" parameterType="${basepackage}.${modulepackage}.model.${className}"</#if>>
         insert into ${table.sqlName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
         <#list table.columns as column>
