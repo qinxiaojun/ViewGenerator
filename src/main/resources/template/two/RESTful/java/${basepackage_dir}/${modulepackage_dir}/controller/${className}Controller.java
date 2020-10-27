@@ -94,7 +94,7 @@ public class ${className}Controller {
     @ApiOperation(value="删除${tableComment}")
     public ResultData delete (@PathVariable("${table.pkColumn.columnNameLower}")${table.pkColumn.javaType} ${table.pkColumn.columnNameLower}){
         return Optional.of(${classNameLower}Service.deleteByColumn("${table.pkColumn.columnNameLower}",${table.pkColumn.columnNameLower})).filter(count -> count > 0)
-                .map(ResultData::success).orElseThrow(() -> new BasicException(SystemTip.DELETE_FAIL));
+                .map(ResultData.success()).orElseThrow(() -> new BasicException(SystemTip.DELETE_FAIL));
     }
 
     /**
@@ -104,6 +104,6 @@ public class ${className}Controller {
     @ApiOperation(value="批量删除${tableComment}")
     public ResultData batchDelete (${table.pkColumn.javaType}... ${table.pkColumn.columnNameLower}s){
         return Optional.of(${classNameLower}Service.batchDelete(${table.pkColumn.columnNameLower}s)).filter(count -> count > 0)
-                .map(ResultData::success).orElseThrow(() -> new BasicException(SystemTip.DELETE_FAIL));
+                .map(ResultData.success()).orElseThrow(() -> new BasicException(SystemTip.DELETE_FAIL));
     }
 }
