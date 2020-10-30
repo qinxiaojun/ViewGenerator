@@ -17,7 +17,7 @@
 
     <sql id="${classNameLower}AliasColumns">
         <#list table.columns as column>
-        t.`${column.sqlName}` AS t_${column.sqlName}<#if column_has_next>,</#if>
+        t.`${column.sqlName}` as t_${column.sqlName}<#if column_has_next>,</#if>
         </#list>
     </sql>
 
