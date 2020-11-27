@@ -22,6 +22,7 @@ CREATE TABLE permission (
   per_code varchar(128) not null COMMENT '权限代码字符串'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT "资源表";
 
+
 insert into user values(null, "admin", "admin", now());
 insert into user values(null, "wang", "wang", now());
 insert into user values(null, "guest", "guest", now());
