@@ -69,8 +69,8 @@ public class SafeProperties extends Properties {
                                 break;
                             }
                         }
-                        nextLine = nextLine.substring(startIndex, nextLine.length());
-                        line = new String(loppedLine + nextLine);
+                        nextLine = nextLine.substring(startIndex);
+                        line = loppedLine + nextLine;
                         len = line.length();
                     }
                     int separatorIndex;
