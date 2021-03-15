@@ -49,6 +49,6 @@ public class FormField {
             }
         }
         GeneratorProperties.setProperty(FORM_FIELD, jsonArray.toJSONString());
-        log.info("{}表单显示的字符串列表:{}", tableName, GeneratorProperties.getProperty(FORM_FIELD));
+        log.info("{}表单显示的字符串列表 - {}", tableName, GeneratorProperties.getProperty(FORM_FIELD));
     }
 }
