@@ -15,6 +15,7 @@ import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
+ * ${tableComment}实体
  * @author ${author}
  * @date ${now?string('yyyy-MM-dd HH:mm:ss')}
  */

@@ -73,8 +73,10 @@ public class ${className}Controller {
     @PostMapping
     @ApiOperation(value="新增${tableComment}")
     public ResultData add (${className} ${classNameLower}){
-        return Optional.of(${classNameLower}Service.insertIgnoreNull(${classNameLower})).filter(count -> count > 0)
-                .map(count -> ResultData.success(${classNameLower})).orElseThrow(() -> new BasicException(SystemTip.INSERT_FAIL));
+        return Optional.of(${classNameLower}Service.insertIgnoreNull(${classNameLower}))
+                .filter(count -> count > 0)
+                .map(count -> ResultData.success(${classNameLower}))
+                .orElseThrow(() -> new BasicException(SystemTip.INSERT_FAIL));
     }
 
     /**
@@ -83,8 +85,10 @@ public class ${className}Controller {
     @PutMapping
     @ApiOperation(value="更新${tableComment}")
     public ResultData update (${className} ${classNameLower}){
-        return Optional.of(${classNameLower}Service.updateIgnoreNull(${classNameLower})).filter(count -> count > 0)
-                .map(count -> ResultData.success(${classNameLower})).orElseThrow(() -> new BasicException(SystemTip.UPDATE_FAIL));
+        return Optional.of(${classNameLower}Service.updateIgnoreNull(${classNameLower}))
+                .filter(count -> count > 0)
+                .map(count -> ResultData.success(${classNameLower}))
+                .orElseThrow(() -> new BasicException(SystemTip.UPDATE_FAIL));
     }
 
     /**
@@ -93,8 +97,10 @@ public class ${className}Controller {
     @DeleteMapping("/{${table.pkColumn.columnNameLower}}")
     @ApiOperation(value="删除${tableComment}")
     public ResultData delete (@PathVariable("${table.pkColumn.columnNameLower}")${table.pkColumn.javaType} ${table.pkColumn.columnNameLower}){
-        return Optional.of(${classNameLower}Service.deleteByColumn("${table.pkColumn.columnNameLower}",${table.pkColumn.columnNameLower})).filter(count -> count > 0)
-                .map(ResultData.success()).orElseThrow(() -> new BasicException(SystemTip.DELETE_FAIL));
+        return Optional.of(${classNameLower}Service.deleteByColumn("${table.pkColumn.columnNameLower}",${table.pkColumn.columnNameLower}))
+                .filter(count -> count > 0)
+                .map(count -> ResultData.success())
+                .orElseThrow(() -> new BasicException(SystemTip.DELETE_FAIL));
     }
 
     /**
@@ -103,7 +109,9 @@ public class ${className}Controller {
     @DeleteMapping("/batch")
     @ApiOperation(value="批量删除${tableComment}")
     public ResultData batchDelete (${table.pkColumn.javaType}... ${table.pkColumn.columnNameLower}s){
-        return Optional.of(${classNameLower}Service.batchDelete(${table.pkColumn.columnNameLower}s)).filter(count -> count > 0)
-                .map(ResultData.success()).orElseThrow(() -> new BasicException(SystemTip.DELETE_FAIL));
+        return Optional.of(${classNameLower}Service.batchDelete(${table.pkColumn.columnNameLower}s))
+                .filter(count -> count > 0)
+                .map(count -> ResultData.success())
+                .orElseThrow(() -> new BasicException(SystemTip.DELETE_FAIL));
     }
 }
