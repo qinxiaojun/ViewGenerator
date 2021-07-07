@@ -30,9 +30,7 @@ public class ${className} implements Serializable{
     <#macro generateFieldsNew>
     <#--自定义函数，根据数据库中表字段生成java中的属性-->
     <#list table.columns as column>
-    /**
-     * ${column.columnAlias!}
-     */
+
     <#if column.isDateTimeColumn>
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     </#if>
