@@ -38,7 +38,7 @@ public class ${className}Controller {
      * 列表
      */
     @GetMapping
-    @ApiOperation(value="查询${tableComment}列表")
+    @ApiOperation(value="查询${tableComment}列表",response = ${className}.class)
     public ResultData list (HttpServletRequest request,${className} ${classNameLower}){
         return ResultData.success(${classNameLower}Service.findList(${classNameLower}));
     }
@@ -47,7 +47,7 @@ public class ${className}Controller {
      * 分页查询列表
      */
     @GetMapping("/pager")
-    @ApiOperation(value="分页查询${tableComment}")
+    @ApiOperation(value="分页查询${tableComment}",response = ${className}.class)
     public ResultData pager (HttpServletRequest request, ${className} ${classNameLower},BasePager basePager){
         PageHelper.startPage(basePager.getPage(), basePager.getRows(), basePager.getSortBy());
         List<${className}> list = ${classNameLower}Service.findList(${classNameLower});
