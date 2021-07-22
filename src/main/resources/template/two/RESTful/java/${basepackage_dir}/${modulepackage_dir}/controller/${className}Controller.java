@@ -3,6 +3,7 @@
 <#assign classNameLower=className?uncap_first>
 package ${basepackage}.${modulepackage}.controller;
 
+import cn.hutool.core.util.StrUtil;
 import org.springframework.web.bind.annotation.*;
 import ${basepackage}.${modulepackage}.model.${className};
 import ${basepackage}.${modulepackage}.service.I${className}Service;
@@ -34,18 +35,12 @@ public class ${className}Controller {
     @Resource
     private I${className}Service ${classNameLower}Service;
 
-    /**
-     * 列表
-     */
     @GetMapping
     @ApiOperation(value="查询${tableComment}列表",response = ${className}.class)
     public ResultData list (HttpServletRequest request,${className} ${classNameLower}){
         return ResultData.success(${classNameLower}Service.findList(${classNameLower}));
     }
 
-    /**
-     * 分页查询列表
-     */
     @GetMapping("/pager")
     @ApiOperation(value="分页查询${tableComment}",response = ${className}.class)
     public ResultData pager (HttpServletRequest request, ${className} ${classNameLower},BasePager basePager){
@@ -58,18 +53,12 @@ public class ${className}Controller {
         return ResultData.success(result);
     }
 
-    /**
-     * 查询
-     */
-    @GetMapping("/{${table.pkColumn.columnNameLower}}")
-    @ApiOperation(value="通过id查询${tableComment}")
-    public ResultData findById (@PathVariable("${table.pkColumn.columnNameLower}")${table.pkColumn.javaType} ${table.pkColumn.columnNameLower}){
-        return ResultData.success(${classNameLower}Service.findByColumn("${table.pkColumn.columnNameLower}",${table.pkColumn.columnNameLower}));
+    @GetMapping("/{column}/{value}")
+    @ApiOperation(value="通过字段名查询${tableComment}",response = ${className}.class)
+    public ResultData findByColumn (@PathVariable("column")String column,@PathVariable("value")Object value){
+        return ResultData.success(${classNameLower}Service.findByColumn(StrUtil.toUnderlineCase(column),value));
     }
 
-    /**
-     * 新增
-     */
     @PostMapping
     @ApiOperation(value="新增${tableComment}")
     public ResultData add (${className} ${classNameLower}){
@@ -79,11 +68,8 @@ public class ${className}Controller {
                 .orElseThrow(() -> new BasicException(SystemTip.INSERT_FAIL));
     }
 
-    /**
-     * 更新
-     */
-    @PutMapping
-    @ApiOperation(value="更新${tableComment}")
+    @PatchMapping
+    @ApiOperation(value="更新${tableComment}",notes = "局部更新,忽略空值")
     public ResultData update (${className} ${classNameLower}){
         return Optional.of(${classNameLower}Service.updateIgnoreNull(${classNameLower}))
                 .filter(count -> count > 0)
@@ -91,21 +77,24 @@ public class ${className}Controller {
                 .orElseThrow(() -> new BasicException(SystemTip.UPDATE_FAIL));
     }
 
-    /**
-     * 删除
-     */
-    @DeleteMapping("/{${table.pkColumn.columnNameLower}}")
-    @ApiOperation(value="删除${tableComment}")
-    public ResultData delete (@PathVariable("${table.pkColumn.columnNameLower}")${table.pkColumn.javaType} ${table.pkColumn.columnNameLower}){
-        return Optional.of(${classNameLower}Service.deleteByColumn("${table.pkColumn.columnNameLower}",${table.pkColumn.columnNameLower}))
+    @PutMapping
+    @ApiOperation(value="更新${tableComment}",notes = "整体更新")
+    public ResultData update (${className} ${classNameLower}){
+        return Optional.of(${classNameLower}Service.update(${classNameLower}))
+                .filter(count -> count > 0)
+                .map(count -> ResultData.success(${classNameLower}))
+                .orElseThrow(() -> new BasicException(SystemTip.UPDATE_FAIL));
+    }
+
+    @DeleteMapping("/{column}/{value}")
+    @ApiOperation(value="通过字段名删除${tableComment}")
+    public ResultData deleteByColumn (@PathVariable("column")String column,@PathVariable("value")Object value){
+        return Optional.of(${classNameLower}Service.deleteByColumn(StrUtil.toUnderlineCase(column),value))
                 .filter(count -> count > 0)
                 .map(count -> ResultData.success())
                 .orElseThrow(() -> new BasicException(SystemTip.DELETE_FAIL));
     }
 
-    /**
-     * 批量删除
-     */
     @DeleteMapping("/batch")
     @ApiOperation(value="批量删除${tableComment}")
     public ResultData batchDelete (${table.pkColumn.javaType}... ${table.pkColumn.columnNameLower}s){
