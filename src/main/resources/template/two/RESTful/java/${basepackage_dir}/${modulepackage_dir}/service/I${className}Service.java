@@ -37,13 +37,6 @@ public interface I${className}Service{
     int insert(${className} ${classNameLower});
 
     /**
-     * 新增对象,忽略空值
-     * @param ${classNameLower}
-     * @return
-     */
-    int insertIgnoreNull(${className} ${classNameLower});
-
-    /**
      * 修改对象
      * @param ${classNameLower}
      * @return
