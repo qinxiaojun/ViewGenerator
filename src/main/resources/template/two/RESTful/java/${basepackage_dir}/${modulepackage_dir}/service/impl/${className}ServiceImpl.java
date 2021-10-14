@@ -33,11 +33,6 @@ public class ${className}ServiceImpl implements I${className}Service{
     }
 
     @Override
-    public int insertIgnoreNull(${className} ${classNameLower}) {
-        return ${classNameLower}Dao.insertIgnoreNull(${classNameLower});
-    }
-
-    @Override
     public int update(${className} ${classNameLower}) {
         return ${classNameLower}Dao.update(${classNameLower});
     }
