@@ -70,7 +70,7 @@ public class ${className}Controller {
 
     @PatchMapping
     @ApiOperation(value="更新${tableComment}",notes = "局部更新,忽略空值")
-    public ResultData update (${className} ${classNameLower}){
+    public ResultData updateIgnoreNull (${className} ${classNameLower}){
         return Optional.of(${classNameLower}Service.updateIgnoreNull(${classNameLower}))
                 .filter(count -> count > 0)
                 .map(count -> ResultData.success(${classNameLower}))
