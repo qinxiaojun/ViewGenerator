@@ -62,7 +62,7 @@ public class ${className}Controller {
     @PostMapping
     @ApiOperation(value="新增${tableComment}")
     public ResultData add (${className} ${classNameLower}){
-        return Optional.of(${classNameLower}Service.insertIgnoreNull(${classNameLower}))
+        return Optional.of(${classNameLower}Service.insert(${classNameLower}))
                 .filter(count -> count > 0)
                 .map(count -> ResultData.success(${classNameLower}))
                 .orElseThrow(() -> new BasicException(SystemTip.INSERT_FAIL));

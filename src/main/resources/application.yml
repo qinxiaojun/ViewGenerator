@@ -9,9 +9,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/dev?useSSL=false&useUnicode=true&amp;characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&amp;characterEncoding=UTF-8
     username: root
-    password: mioto88888
+    password: 123456
     druid:
       filters: stat
       maxActive: 20
